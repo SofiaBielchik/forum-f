@@ -1,9 +1,9 @@
 import React from 'react';
 import TextField from '@mui/material/TextField';
-import Paper from '@mui/material/Paper';
+
 import Button from '@mui/material/Button';
 import SimpleMDE from 'react-simplemde-editor';
-
+import { Box } from "@mui/material";
 import 'easymde/dist/easymde.min.css';
 import styles from './AddPost.module.scss';
 
@@ -24,7 +24,7 @@ export const AddPost = () => {
       spellChecker: false,
       maxHeight: '400px',
       autofocus: true,
-      placeholder: 'Введите текст...',
+      placeholder: 'Ввести текст...',
       status: false,
       autosave: {
         enabled: true,
@@ -35,14 +35,14 @@ export const AddPost = () => {
   );
 
   return (
-    <Paper style={{ padding: 30 }}>
+    <Box style={{ padding: 30 }}>
       <Button variant="outlined" size="large">
-        Загрузить превью
+        Загрузити прев'ю
       </Button>
       <input type="file" onChange={handleChangeFile} hidden />
       {imageUrl && (
         <Button variant="contained" color="error" onClick={onClickRemoveImage}>
-          Удалить
+          Видалити
         </Button>
       )}
       {imageUrl && (
@@ -53,19 +53,19 @@ export const AddPost = () => {
       <TextField
         classes={{ root: styles.title }}
         variant="standard"
-        placeholder="Заголовок статьи..."
+        placeholder="Заголовок статті..."
         fullWidth
       />
-      <TextField classes={{ root: styles.tags }} variant="standard" placeholder="Тэги" fullWidth />
+      <TextField classes={{ root: styles.tags }} variant="standard" placeholder="Теги" fullWidth />
       <SimpleMDE className={styles.editor} value={value} onChange={onChange} options={options} />
       <div className={styles.buttons}>
         <Button size="large" variant="contained">
-          Опубликовать
+          Опублікувати
         </Button>
         <a href="/">
-          <Button size="large">Отмена</Button>
+          <Button size="large">Відміна</Button>
         </a>
       </div>
-    </Paper>
+    </Box>
   );
 };
